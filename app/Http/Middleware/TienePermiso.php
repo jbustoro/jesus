@@ -14,7 +14,7 @@ class TienePermiso
      */
     public function handle(Request $request, Closure $next, $guard = null)
     {
-        if (Request::All) {//si esta en la base de datos
+        if ($request->permitido()) {//si esta en la base de datos
             return $next($request);
         }
         return redirect('/noTienePermiso');
